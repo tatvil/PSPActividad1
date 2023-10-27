@@ -4,9 +4,15 @@ import java.util.Objects;
 
 public class Director {
 	private int id;
-	private String nombre, apellidos;
-	private String nacionalidad;
+	private String nombre, apellidos, nacionalidad;
 	
+    public Director(int id, String nombre, String apellidos, String nacionalidad) {
+        this.id = id;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.nacionalidad = nacionalidad;
+    }
+
 	public int getId() {
 		return id;
 	}

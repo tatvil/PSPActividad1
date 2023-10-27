@@ -1,48 +1,60 @@
 package Servidor;
-import Nacionalidades;
+
+import java.util.ArrayList;
 
 public class Main {
+    private static String[] nacionalidades;
+    private static ArrayList<Director> directores;
+    private static ArrayList<Pelicula> peliculas;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
+    public static void cargarDatos() {
+        nacionalidades = new String[]{"Estados Unidos", "Reino Unido", "España", "Italia"};
 
+        // Crear un ArrayList de directores
+        directores = new ArrayList<>();
 
-		Director[] Directores = new Director[10];
-		Pelicula[] Peliculas = new Pelicula[10];
-		
+        // Agregar directores al ArrayList
+        directores.add(new Director(1, "James", "Cameron", nacionalidades[0]));
+        directores.add(new Director(2, "Steven", "Spielberg", nacionalidades[0]));
+        directores.add(new Director(3, "Pedro", "Almodovar", nacionalidades[2]));
+        directores.add(new Director(4, "Roberto", "Benigni", nacionalidades[3]));
+        directores.add(new Director(5, "Chris", "Columbus", nacionalidades[0]));
+        directores.add(new Director(6, "George", "Lucas", nacionalidades[0]));
 
-		
-		Directores[0].setId(1);
-		Directores[0].setNombre("James");
-		Directores[0].setApellidos("Cameron");
-		Directores[0].setNacionalidad("Estados Unidos");
-		
-		Directores[1].setId(2);
-		Directores[1].setNombre("Steven");
-		Directores[1].setApellidos("Spelberg");
-		Directores[1].setNacionalidad("Estados Unidos");
-		
-		Peliculas[0].setId(1);
-		Peliculas[0].setDirector(Directores[0]);
-		Peliculas[0].setTitulo("Avatar");
-		Peliculas[0].setPrecio(10);
-		
-		Peliculas[1].setId(2);
-		Peliculas[1].setDirector(Directores[0]);
-		Peliculas[1].setTitulo("Avatar. El sentido del agua");
-		Peliculas[1].setPrecio(15);
-		
-		Peliculas[2].setId(3);
-		Peliculas[2].setDirector(Directores[1]);
-		Peliculas[2].setTitulo("La lista de Schindler");
-		Peliculas[2].setPrecio(10);
-	
-		Peliculas[3].setId(4);
-		Peliculas[3].setDirector(Directores[1]);
-		Peliculas[3].setTitulo("ET El Extraterrestre");
-		Peliculas[3].setPrecio(10);
-		
-		System.out.println(Peliculas[0]);
-	}
+        // Crear un ArrayList de peliculas
+        peliculas = new ArrayList<>();
 
+        // Agregar peliculas al ArrayList
+        peliculas.add(new Pelicula(1, directores.get(0), "Avatar", 10));
+        peliculas.add(new Pelicula(2, directores.get(0), "Avatar. El sentido del agua", 15));
+        peliculas.add(new Pelicula(3, directores.get(1), "Jurassic Park", 12));
+        peliculas.add(new Pelicula(4, directores.get(1), "E.T. el Extra Terrestre", 14));
+        peliculas.add(new Pelicula(5, directores.get(1), "La lista de Schindler", 14));
+        peliculas.add(new Pelicula(6, directores.get(2), "Mujeres al borde de un ataque de nervios", 10));
+        peliculas.add(new Pelicula(7, directores.get(2), "Todo sobre mi madre", 10));
+        peliculas.add(new Pelicula(8, directores.get(3), "La vida es bella", 10));
+        peliculas.add(new Pelicula(9, directores.get(5), "Indiana Jones", 9));
+        peliculas.add(new Pelicula(10, directores.get(4), "Harry Potter y la piedra filosofal", 10));
+    }
+
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        cargarDatos();
+
+        System.out.println("NACIONALIDADES");
+        for (String nacionalidad : nacionalidades) {
+            System.out.println(nacionalidad);
+        }
+
+        System.out.println("\nDIRECTORES");
+        for (Director director : directores) {
+            System.out.println("ID: " + director.getId() + ", Nombre: " + director.getNombre() + " " + director.getApellidos() + " (" + director.getNacionalidad() + ")");
+        }
+
+        System.out.println("\nPELICULAS");
+        for (Pelicula pelicula : peliculas) {
+            System.out.println(pelicula.getId() + " - " + pelicula.getTitulo() + " (" + pelicula.getDirector().getNombre() + " " + pelicula.getDirector().getApellidos() + ")");
+        }
+    }
 }
+

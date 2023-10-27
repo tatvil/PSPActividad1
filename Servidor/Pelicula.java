@@ -7,6 +7,14 @@ public class Pelicula {
 	private String titulo;
 	private Director director;
 	private float precio;
+	
+	public Pelicula(int id, Director director, String titulo, int precio) {
+		 	this.id = id;
+	        this.director = director;
+	        this.titulo = titulo;
+	        this.precio = precio;
+	}
+	
 	public int getId() {
 		return id;
 	}
